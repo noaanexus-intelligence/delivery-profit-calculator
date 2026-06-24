@@ -24,9 +24,7 @@ export function EmptyStateCard({ setField }: EmptyStateCardProps) {
         <Sparkles className="text-muted-foreground size-8" />
         <div className="grid gap-1">
           <p className="font-semibold">เริ่มต้นใช้งาน</p>
-          <p className="text-muted-foreground text-sm">
-            กรอกราคาขายและต้นทุนของเมนูด้านล่าง ระบบจะคำนวณกำไรจริงให้ทันที
-          </p>
+          <p className="text-muted-foreground text-sm">รู้กำไรจริงก่อนตัดสินใจเข้าร่วมแพลตฟอร์ม</p>
         </div>
         <Button
           type="button"
