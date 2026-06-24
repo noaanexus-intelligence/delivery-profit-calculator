@@ -1,5 +1,6 @@
 import { ProfitSummaryCard } from '@/components/calculator/ProfitSummaryCard';
 import { WarningList } from '@/components/calculator/WarningList';
+import { ProfitComparisonCard } from '@/components/calculator/ProfitComparisonCard';
 import { BreakdownDetail } from '@/components/calculator/BreakdownDetail';
 import { VolumeProjectionCard } from '@/components/calculator/VolumeProjectionCard';
 import { PriceRecommendationCard } from '@/components/calculator/PriceRecommendationCard';
@@ -15,9 +16,10 @@ export function ResultsSection({ result }: ResultsSectionProps) {
   }
 
   return (
-    <div className="grid gap-6">
+    <div className="animate-fade-in-up grid gap-6">
       <ProfitSummaryCard breakdown={result.breakdown} risk={result.risk} />
       <WarningList warnings={result.warnings} />
+      <ProfitComparisonCard breakdown={result.breakdown} />
 
       <div className="grid gap-4">
         <h2 className="text-muted-foreground text-sm font-medium">รายละเอียดเพิ่มเติม</h2>

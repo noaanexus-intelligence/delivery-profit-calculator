@@ -37,7 +37,7 @@ export function ProfitCalculator() {
           </p>
         </header>
 
-        {isPristine && <EmptyStateCard />}
+        {isPristine && <EmptyStateCard setField={setField} />}
 
         <div className="grid gap-6">
           <MenuCostSection raw={raw} setField={setField} />

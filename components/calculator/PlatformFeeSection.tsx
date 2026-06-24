@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { PlatformPresetSelector } from '@/components/calculator/PlatformPresetSelector';
 import type { RawFormState } from '@/hooks/useProfitCalculatorForm';
 import type { DiscountType, GpBase } from '@/lib/calculation-engine';
 
@@ -17,6 +18,8 @@ export function PlatformFeeSection({ raw, setField }: PlatformFeeSectionProps) {
         <CardTitle>ค่าธรรมเนียมแพลตฟอร์ม</CardTitle>
       </CardHeader>
       <CardContent className="grid gap-4">
+        <PlatformPresetSelector setField={setField} />
+
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="grid gap-2">
             <Label htmlFor="gpPercent">GP (%)</Label>

@@ -1,7 +1,7 @@
 import { Card, CardHeader, CardTitle, CardAction, CardContent } from '@/components/ui/card';
 import { RiskBadge } from '@/components/calculator/RiskBadge';
 import { formatCurrency, formatPercent } from '@/lib/format';
-import { getRiskAccentBorderClass } from '@/lib/risk-color-map';
+import { getRiskAccentBorderClass, getRiskHeroBgClass } from '@/lib/risk-color-map';
 import type { CalculationBreakdown, RiskResult } from '@/lib/calculation-engine';
 
 interface ProfitSummaryCardProps {
@@ -11,7 +11,9 @@ interface ProfitSummaryCardProps {
 
 export function ProfitSummaryCard({ breakdown, risk }: ProfitSummaryCardProps) {
   return (
-    <Card className={`border-l-4 shadow-md ${getRiskAccentBorderClass(risk.colorToken)}`}>
+    <Card
+      className={`border-l-4 shadow-md ${getRiskAccentBorderClass(risk.colorToken)} ${getRiskHeroBgClass(risk.colorToken)}`}
+    >
       <CardHeader>
         <CardTitle>กำไรจริงต่อออเดอร์</CardTitle>
         <CardAction>
@@ -20,7 +22,7 @@ export function ProfitSummaryCard({ breakdown, risk }: ProfitSummaryCardProps) {
       </CardHeader>
       <CardContent className="grid gap-4">
         <div>
-          <p className="text-4xl font-semibold tracking-tight tabular-nums">
+          <p className="text-5xl font-bold tracking-tight tabular-nums">
             {formatCurrency(breakdown.realProfit)}
           </p>
           <p className="text-muted-foreground text-sm">
