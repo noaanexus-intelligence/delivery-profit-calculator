@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { getRiskColorClasses } from '@/lib/risk-color-map';
+import { getRiskColorClasses, getRiskEmoji } from '@/lib/risk-color-map';
 import type { RiskResult } from '@/lib/calculation-engine';
 
 interface RiskBadgeProps {
@@ -8,8 +8,11 @@ interface RiskBadgeProps {
 
 export function RiskBadge({ risk }: RiskBadgeProps) {
   return (
-    <Badge variant="outline" className={getRiskColorClasses(risk.colorToken)}>
-      {risk.label}
+    <Badge
+      variant="outline"
+      className={`font-semibold ${getRiskColorClasses(risk.colorToken)}`}
+    >
+      {getRiskEmoji(risk.colorToken)} {risk.label}
     </Badge>
   );
 }

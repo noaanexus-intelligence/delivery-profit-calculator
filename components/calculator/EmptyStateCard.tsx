@@ -30,8 +30,7 @@ export function EmptyStateCard({ setField }: EmptyStateCardProps) {
         </div>
         <Button
           type="button"
-          variant="secondary"
-          size="sm"
+          variant="default"
           onClick={() => {
             (Object.entries(SAMPLE_VALUES) as [keyof RawFormState, string][]).forEach(
               ([field, value]) => {

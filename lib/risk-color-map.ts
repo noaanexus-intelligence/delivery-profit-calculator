@@ -29,8 +29,19 @@ const RISK_HERO_BG_MAP: Record<string, string> = {
   red: 'bg-red-50 dark:bg-red-950/30',
 };
 
+const RISK_EMOJI_MAP: Record<string, string> = {
+  green: '✅',
+  yellow: '🟡',
+  orange: '⚠️',
+  red: '❌',
+};
+
 export function getRiskColorClasses(colorToken: string): string {
   return RISK_COLOR_MAP[colorToken] ?? RISK_COLOR_MAP.red;
+}
+
+export function getRiskEmoji(colorToken: string): string {
+  return RISK_EMOJI_MAP[colorToken] ?? RISK_EMOJI_MAP.red;
 }
 
 export function getRiskHeroBgClass(colorToken: string): string {

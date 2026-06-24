@@ -1,7 +1,15 @@
-import { Card, CardHeader, CardTitle, CardAction, CardContent } from '@/components/ui/card';
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardAction,
+  CardContent,
+  CardFooter,
+} from '@/components/ui/card';
 import { RiskBadge } from '@/components/calculator/RiskBadge';
+import { ShareResultButton } from '@/components/calculator/ShareResultButton';
 import { formatCurrency, formatPercent } from '@/lib/format';
-import { getRiskAccentBorderClass, getRiskHeroBgClass } from '@/lib/risk-color-map';
+import { getRiskAccentBorderClass, getRiskHeroBgClass, getRiskEmoji } from '@/lib/risk-color-map';
 import type { CalculationBreakdown, RiskResult } from '@/lib/calculation-engine';
 
 interface ProfitSummaryCardProps {
@@ -21,13 +29,18 @@ export function ProfitSummaryCard({ breakdown, risk }: ProfitSummaryCardProps) {
         </CardAction>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <div>
-          <p className="text-5xl font-bold tracking-tight tabular-nums">
-            {formatCurrency(breakdown.realProfit)}
-          </p>
-          <p className="text-muted-foreground text-sm">
-            {formatPercent(breakdown.profitPercentOfAppPrice)} ของราคาขายหน้าแอป
-          </p>
+        <div className="flex items-center gap-3">
+          <span className="text-4xl" aria-hidden="true">
+            {getRiskEmoji(risk.colorToken)}
+          </span>
+          <div>
+            <p className="text-5xl font-bold tracking-tight tabular-nums">
+              {formatCurrency(breakdown.realProfit)}
+            </p>
+            <p className="text-muted-foreground text-sm">
+              {formatPercent(breakdown.profitPercentOfAppPrice)} ของราคาขายหน้าแอป
+            </p>
+          </div>
         </div>
         <dl className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
           <div>
@@ -40,6 +53,9 @@ export function ProfitSummaryCard({ breakdown, risk }: ProfitSummaryCardProps) {
           </div>
         </dl>
       </CardContent>
+      <CardFooter>
+        <ShareResultButton breakdown={breakdown} risk={risk} />
+      </CardFooter>
     </Card>
   );
 }
