@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardTitle, CardAction, CardContent } from '@/components/ui/card';
 import { RiskBadge } from '@/components/calculator/RiskBadge';
 import { formatCurrency, formatPercent } from '@/lib/format';
+import { getRiskAccentBorderClass } from '@/lib/risk-color-map';
 import type { CalculationBreakdown, RiskResult } from '@/lib/calculation-engine';
 
 interface ProfitSummaryCardProps {
@@ -10,7 +11,7 @@ interface ProfitSummaryCardProps {
 
 export function ProfitSummaryCard({ breakdown, risk }: ProfitSummaryCardProps) {
   return (
-    <Card>
+    <Card className={`border-l-4 shadow-md ${getRiskAccentBorderClass(risk.colorToken)}`}>
       <CardHeader>
         <CardTitle>กำไรจริงต่อออเดอร์</CardTitle>
         <CardAction>
@@ -19,7 +20,9 @@ export function ProfitSummaryCard({ breakdown, risk }: ProfitSummaryCardProps) {
       </CardHeader>
       <CardContent className="grid gap-4">
         <div>
-          <p className="text-3xl font-semibold">{formatCurrency(breakdown.realProfit)}</p>
+          <p className="text-4xl font-semibold tracking-tight tabular-nums">
+            {formatCurrency(breakdown.realProfit)}
+          </p>
           <p className="text-muted-foreground text-sm">
             {formatPercent(breakdown.profitPercentOfAppPrice)} ของราคาขายหน้าแอป
           </p>
@@ -27,11 +30,11 @@ export function ProfitSummaryCard({ breakdown, risk }: ProfitSummaryCardProps) {
         <dl className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
           <div>
             <dt className="text-muted-foreground">ยอดที่ได้รับจริง</dt>
-            <dd className="font-medium">{formatCurrency(breakdown.netReceived)}</dd>
+            <dd className="font-medium tabular-nums">{formatCurrency(breakdown.netReceived)}</dd>
           </div>
           <div>
             <dt className="text-muted-foreground">ต้นทุนรวม</dt>
-            <dd className="font-medium">{formatCurrency(breakdown.totalCost)}</dd>
+            <dd className="font-medium tabular-nums">{formatCurrency(breakdown.totalCost)}</dd>
           </div>
         </dl>
       </CardContent>

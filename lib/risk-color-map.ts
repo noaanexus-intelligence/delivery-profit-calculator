@@ -8,6 +8,28 @@ const RISK_COLOR_MAP: Record<string, string> = {
   red: 'bg-red-100 text-red-800 border-red-300 dark:bg-red-950 dark:text-red-300 dark:border-red-800',
 };
 
+const RISK_ACCENT_BORDER_MAP: Record<string, string> = {
+  green: 'border-l-green-500',
+  yellow: 'border-l-yellow-500',
+  orange: 'border-l-orange-500',
+  red: 'border-l-red-500',
+};
+
+const RISK_BAR_TINT_MAP: Record<string, string> = {
+  green: 'bg-green-50 border-t-green-500 dark:bg-green-950/40 dark:border-t-green-700',
+  yellow: 'bg-yellow-50 border-t-yellow-500 dark:bg-yellow-950/40 dark:border-t-yellow-700',
+  orange: 'bg-orange-50 border-t-orange-500 dark:bg-orange-950/40 dark:border-t-orange-700',
+  red: 'bg-red-50 border-t-red-500 dark:bg-red-950/40 dark:border-t-red-700',
+};
+
 export function getRiskColorClasses(colorToken: string): string {
   return RISK_COLOR_MAP[colorToken] ?? RISK_COLOR_MAP.red;
+}
+
+export function getRiskAccentBorderClass(colorToken: string): string {
+  return RISK_ACCENT_BORDER_MAP[colorToken] ?? RISK_ACCENT_BORDER_MAP.red;
+}
+
+export function getRiskBarTintClasses(colorToken: string): string {
+  return RISK_BAR_TINT_MAP[colorToken] ?? RISK_BAR_TINT_MAP.red;
 }

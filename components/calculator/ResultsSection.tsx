@@ -18,9 +18,15 @@ export function ResultsSection({ result }: ResultsSectionProps) {
     <div className="grid gap-6">
       <ProfitSummaryCard breakdown={result.breakdown} risk={result.risk} />
       <WarningList warnings={result.warnings} />
-      <BreakdownDetail breakdown={result.breakdown} />
-      <VolumeProjectionCard volumeProjection={result.volumeProjection} />
-      <PriceRecommendationCard priceRecommendation={result.priceRecommendation} />
+
+      <div className="grid gap-4">
+        <h2 className="text-muted-foreground text-sm font-medium">รายละเอียดเพิ่มเติม</h2>
+        <div className="grid gap-6">
+          <BreakdownDetail breakdown={result.breakdown} />
+          <VolumeProjectionCard volumeProjection={result.volumeProjection} />
+          <PriceRecommendationCard priceRecommendation={result.priceRecommendation} />
+        </div>
+      </div>
     </div>
   );
 }

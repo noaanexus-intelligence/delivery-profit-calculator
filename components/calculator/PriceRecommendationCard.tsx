@@ -15,7 +15,7 @@ export function PriceRecommendationCard({ priceRecommendation }: PriceRecommenda
       <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <p className="text-muted-foreground text-sm">ราคาคุ้มทุน</p>
-          <p className="text-xl font-semibold">
+          <p className="text-xl font-semibold tracking-tight tabular-nums">
             {formatCurrency(priceRecommendation.breakevenPrice)}
           </p>
         </div>
@@ -23,7 +23,7 @@ export function PriceRecommendationCard({ priceRecommendation }: PriceRecommenda
           <p className="text-muted-foreground text-sm">
             ราคาแนะนำ (เป้ากำไร {formatPercent(priceRecommendation.targetProfitPercent)})
           </p>
-          <p className="text-xl font-semibold">
+          <p className="text-xl font-semibold tracking-tight tabular-nums">
             {formatCurrency(priceRecommendation.recommendedPrice)}
           </p>
         </div>
