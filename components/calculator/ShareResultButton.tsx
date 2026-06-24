@@ -31,7 +31,7 @@ export function ShareResultButton({ breakdown, risk }: ShareResultButtonProps) {
   return (
     <Button type="button" variant="outline" size="sm" onClick={handleShare}>
       {copied ? <Check className="size-4" /> : <Share2 className="size-4" />}
-      {copied ? 'คัดลอกแล้ว' : 'แชร์ผลลัพธ์'}
+      {copied ? 'คัดลอกผลลัพธ์แล้ว' : 'แชร์ผลลัพธ์'}
     </Button>
   );
 }

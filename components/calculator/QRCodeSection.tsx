@@ -34,6 +34,9 @@ export function QRCodeSection() {
         <p className="text-muted-foreground text-center text-xs">
           เหมาะสำหรับโพสต์ในกลุ่มร้านอาหารหรือกลุ่ม Grab
         </p>
+        <p className="text-muted-foreground text-center text-xs">
+          หากสแกนไม่ได้ ให้เปิดลิงก์: delivery-profit-calculator.vercel.app
+        </p>
       </CardContent>
     </Card>
   );
