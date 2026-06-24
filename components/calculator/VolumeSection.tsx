@@ -18,7 +18,7 @@ export function VolumeSection({ raw, setField, toggleVolume }: VolumeSectionProp
         <Switch checked={raw.volumeEnabled} onCheckedChange={toggleVolume} />
       </CardHeader>
       {raw.volumeEnabled && (
-        <CardContent className="grid grid-cols-2 gap-4">
+        <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="grid gap-2">
             <Label htmlFor="estimatedOrdersPerDay">ออเดอร์/วัน (โดยประมาณ)</Label>
             <Input

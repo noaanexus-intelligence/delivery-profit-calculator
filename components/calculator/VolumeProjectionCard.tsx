@@ -16,7 +16,7 @@ export function VolumeProjectionCard({ volumeProjection }: VolumeProjectionCardP
       <CardHeader>
         <CardTitle>ประมาณการกำไรตามจำนวนออเดอร์</CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-2 gap-4">
+      <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <p className="text-muted-foreground text-sm">กำไรต่อวัน</p>
           <p className="text-xl font-semibold">{formatCurrency(volumeProjection.dailyProfit)}</p>

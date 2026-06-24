@@ -12,7 +12,7 @@ export function PriceRecommendationCard({ priceRecommendation }: PriceRecommenda
       <CardHeader>
         <CardTitle>คำแนะนำราคาขาย</CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-2 gap-4">
+      <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
           <p className="text-muted-foreground text-sm">ราคาคุ้มทุน</p>
           <p className="text-xl font-semibold">

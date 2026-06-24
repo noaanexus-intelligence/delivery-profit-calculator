@@ -24,7 +24,7 @@ export function ProfitSummaryCard({ breakdown, risk }: ProfitSummaryCardProps) {
             {formatPercent(breakdown.profitPercentOfAppPrice)} ของราคาขายหน้าแอป
           </p>
         </div>
-        <dl className="grid grid-cols-2 gap-3 text-sm">
+        <dl className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
           <div>
             <dt className="text-muted-foreground">ยอดที่ได้รับจริง</dt>
             <dd className="font-medium">{formatCurrency(breakdown.netReceived)}</dd>
