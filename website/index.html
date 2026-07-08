@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>พี่หนึ่งเขาใหญ่ — รับเหมาก่อสร้าง &amp; ทาสีบ้าน</title>
+<meta name="description" content="พี่หนึ่งเขาใหญ่ รับเหมาก่อสร้าง ต่อเติม ทาสีบ้าน เขาใหญ่ ปากช่อง พร้อมโชว์สีตัวอย่างบ้าน ลองสีก่อนทาจริง ประเมินราคาฟรี">
+<style>
+  :root{
+    --green:#1b5e3a;
+    --green-dark:#123f27;
+    --green-light:#e8f5ee;
+    --gold:#c9a227;
+    --gold-light:#f7edd0;
+    --text:#22302a;
+    --muted:#5c6b63;
+    --bg:#fdfcf8;
+    --white:#ffffff;
+    --radius:16px;
+    --shadow:0 8px 30px rgba(18,63,39,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Leelawadee UI","Sukhumvit Set","Prompt","Noto Sans Thai",Tahoma,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.7;
+  }
+  img{max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(253,252,248,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid #e8e4d8;
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;color:var(--green-dark)}
+  .logo .badge{
+    width:38px;height:38px;border-radius:50%;
+    background:linear-gradient(135deg,var(--green),var(--green-dark));
+    color:var(--gold-light);display:grid;place-items:center;
+    font-size:1.2rem;
+  }
+  nav ul{display:flex;gap:20px;list-style:none;font-size:.95rem}
+  nav ul a{color:var(--muted);font-weight:600}
+  nav ul a:hover{color:var(--green)}
+  .btn{
+    display:inline-block;padding:12px 26px;border-radius:999px;
+    font-weight:700;font-size:1rem;transition:transform .15s,box-shadow .15s;
+    cursor:pointer;border:none;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-gold{background:linear-gradient(135deg,#e3c04b,var(--gold));color:#3a2e05}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-line{background:#06c755;color:#fff}
+  .nav .btn{padding:9px 20px;font-size:.9rem}
+  @media(max-width:720px){nav ul{display:none}}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(ellipse at 80% -10%,rgba(201,162,39,.18),transparent 55%),
+      linear-gradient(160deg,var(--green-dark) 0%,var(--green) 70%,#2a7a4e 100%);
+    color:#fff;
+    padding:80px 0 90px;
+    position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:-1px;height:60px;
+    background:var(--bg);
+    clip-path:ellipse(75% 100% at 50% 100%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  @media(max-width:800px){.hero-grid{grid-template-columns:1fr}}
+  .tag{
+    display:inline-block;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.3);
+    padding:6px 16px;border-radius:999px;font-size:.85rem;margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(1.9rem,4.5vw,2.8rem);line-height:1.25;margin-bottom:16px}
+  .hero h1 em{font-style:normal;color:#f2d878}
+  .hero p{font-size:1.08rem;color:#d9e9e0;max-width:520px;margin-bottom:28px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-card{
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:var(--radius);padding:28px;backdrop-filter:blur(4px);
+  }
+  .hero-card h3{color:#f2d878;margin-bottom:12px;font-size:1.05rem}
+  .hero-card ul{list-style:none;display:grid;gap:10px;font-size:.98rem}
+  .hero-card li::before{content:"✔";color:#7fe0a8;margin-right:10px;font-weight:700}
+
+  /* ===== Sections ===== */
+  section{padding:70px 0}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 44px}
+  .section-head .kicker{
+    color:var(--gold);font-weight:800;letter-spacing:.12em;
+    text-transform:uppercase;font-size:.8rem;
+  }
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--green-dark);margin:8px 0 10px}
+  .section-head p{color:var(--muted)}
+
+  /* Trust bar */
+  .trust{background:var(--green-light);padding:34px 0}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}
+  @media(max-width:720px){.trust-grid{grid-template-columns:repeat(2,1fr)}}
+  .trust-item strong{display:block;font-size:1.5rem;color:var(--green-dark)}
+  .trust-item span{color:var(--muted);font-size:.9rem}
+
+  /* Cards */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:860px){.grid-3{grid-template-columns:1fr}}
+  .card{
+    background:var(--white);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .2s;
+  }
+  .card:hover{transform:translateY(-6px)}
+  .card-img{
+    height:150px;display:grid;place-items:center;font-size:3rem;
+    background:linear-gradient(135deg,var(--green-light),var(--gold-light));
+  }
+  .card-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card-body h3{color:var(--green-dark);font-size:1.12rem}
+  .card-body p{color:var(--muted);font-size:.95rem;flex:1}
+  .card-body ul{list-style:none;color:var(--muted);font-size:.92rem;display:grid;gap:6px}
+  .card-body ul li::before{content:"•";color:var(--gold);font-weight:800;margin-right:8px}
+  .card .btn{text-align:center}
+
+  /* ===== ลองสีบ้าน (Color Studio) ===== */
+  .studio{background:var(--green-light)}
+  .studio-wrap{
+    display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:start;
+  }
+  @media(max-width:860px){.studio-wrap{grid-template-columns:1fr}}
+  .house-stage{
+    background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:24px;
+  }
+  .house-stage svg{width:100%;height:auto;display:block}
+  .picked{
+    margin-top:14px;display:flex;align-items:center;gap:12px;
+    background:var(--bg);border:1px solid #e8e4d8;border-radius:12px;padding:12px 16px;
+  }
+  .picked .dot{width:34px;height:34px;border-radius:10px;border:2px solid #fff;box-shadow:0 0 0 1px #d8d4c8;flex-shrink:0}
+  .picked strong{color:var(--green-dark);display:block;font-size:.98rem;line-height:1.3}
+  .picked small{color:var(--muted);font-size:.82rem}
+  .palette-box{
+    background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
+    padding:24px;
+  }
+  .palette-box h3{color:var(--green-dark);font-size:1.05rem;margin-bottom:4px}
+  .palette-box .hint{color:var(--muted);font-size:.88rem;margin-bottom:14px}
+  .swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+  .swatch{
+    border:none;background:none;cursor:pointer;text-align:center;
+    font-family:inherit;font-size:.75rem;color:var(--muted);
+  }
+  .swatch .chip{
+    width:100%;aspect-ratio:1;border-radius:12px;
+    border:3px solid transparent;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);
+    transition:transform .15s;
+    margin-bottom:6px;
+  }
+  .swatch:hover .chip{transform:scale(1.08)}
+  .swatch.active .chip{border-color:var(--green);box-shadow:0 0 0 2px #fff inset}
+  .swatch.active{color:var(--green-dark);font-weight:700}
+
+  /* Portfolio */
+  .work-img{height:190px;padding:14px;display:grid;place-items:center;background:#eef2ea}
+  .work-img svg{width:100%;height:100%;display:block}
+  .chips-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+  .chips-row .mini{width:20px;height:20px;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+
+  /* Testimonials */
+  .quote{
+    background:var(--white);border-radius:var(--radius);padding:26px;
+    box-shadow:var(--shadow);position:relative;
+  }
+  .quote::before{
+    content:"“";position:absolute;top:6px;left:18px;
+    font-size:3.4rem;color:var(--gold);opacity:.4;font-family:Georgia,serif;
+  }
+  .quote p{color:var(--text);font-size:.98rem;margin:14px 0 16px}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .quote .avatar{
+    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    background:var(--green-light);font-size:1.3rem;
+  }
+  .quote .who strong{display:block;color:var(--green-dark);font-size:.95rem}
+  .quote .who span{color:var(--muted);font-size:.82rem}
+  .stars{color:var(--gold);letter-spacing:2px}
+
+  /* Contact */
+  .contact-wrap{
+    display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;
+    background:linear-gradient(150deg,var(--green-dark),var(--green));
+    border-radius:24px;padding:48px;color:#fff;
+  }
+  @media(max-width:800px){.contact-wrap{grid-template-columns:1fr;padding:32px}}
+  .contact-wrap h2{font-size:1.7rem;margin-bottom:10px}
+  .contact-wrap h2 em{font-style:normal;color:#f2d878}
+  .contact-wrap p{color:#d9e9e0;margin-bottom:22px}
+  .contact-list{list-style:none;display:grid;gap:16px}
+  .contact-list li{
+    display:flex;align-items:center;gap:14px;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+    border-radius:14px;padding:14px 18px;font-weight:600;
+  }
+  .contact-list .ci{
+    width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(255,255,255,.15);font-size:1.3rem;flex-shrink:0;
+  }
+  .contact-list small{display:block;font-weight:400;color:#cfe3d7;font-size:.8rem}
+
+  footer{padding:34px 0;text-align:center;color:var(--muted);font-size:.88rem}
+  footer strong{color:var(--green-dark)}
+</style>
+</head>
+<body>
+
+<!-- ======= แถบเมนูด้านบน ======= -->
+<header>
+  <div class="container nav">
+    <a class="logo" href="#top">
+      <span class="badge">🏠</span>
+      พี่หนึ่งเขาใหญ่
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#services">บริการ</a></li>
+        <li><a href="#studio">ลองสีบ้าน</a></li>
+        <li><a href="#works">ผลงาน</a></li>
+        <li><a href="#reviews">รีวิว</a></li>
+        <li><a href="#contact">ติดต่อ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-gold" href="#contact">ประเมินราคาฟรี</a>
+  </div>
+</header>
+
+<!-- ======= ส่วนหัวเว็บ (Hero) ======= -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">🔨 ทีมช่างมืออาชีพ เขาใหญ่ · ปากช่อง</span>
+      <h1>พี่หนึ่งเขาใหญ่<br>รับเหมาก่อสร้าง &amp; <em>ทาสีบ้าน</em> ครบวงจร</h1>
+      <p>ก่อสร้าง ต่อเติม รีโนเวท และทาสีบ้านด้วยสีเกรดพรีเมียม เลือกสีได้ก่อนทาจริงจากตัวอย่างสีบ้านบนเว็บ ประเมินหน้างานและเสนอราคาฟรี ไม่มีบวกเพิ่มภายหลัง</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#studio">🎨 ลองสีบ้านเลย</a>
+        <a class="btn btn-line" href="#contact">💬 ทัก LINE พี่หนึ่ง</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>ทำไมลูกค้าไว้ใจพี่หนึ่ง</h3>
+      <ul>
+        <li>ประเมินหน้างาน + เสนอราคาฟรี</li>
+        <li>ใช้สีแท้เกรดพรีเมียม ทนแดดทนฝน</li>
+        <li>โชว์สีตัวอย่างบ้านก่อนทาจริง</li>
+        <li>รับประกันผลงานหลังส่งมอบ 2 ปี</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======= แถบตัวเลขความน่าเชื่อถือ ======= -->
+<div class="trust">
+  <div class="container trust-grid">
+    <div class="trust-item"><strong>200+ หลัง</strong><span>ผลงานก่อสร้างและทาสี</span></div>
+    <div class="trust-item"><strong>15+ ปี</strong><span>ประสบการณ์ทีมช่าง</span></div>
+    <div class="trust-item"><strong>ประเมินฟรี</strong><span>ถึงหน้างาน ไม่มีค่าใช้จ่าย</span></div>
+    <div class="trust-item"><strong>รับประกัน 2 ปี</strong><span>ดูแลหลังส่งมอบงาน</span></div>
+  </div>
+</div>
+
+<!-- ======= บริการ =======
+     ✏️ แก้รายละเอียดบริการและราคาเริ่มต้นได้ตรงนี้ (ราคาที่ใส่เป็นราคาทดสอบ)
+-->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Services</span>
+      <h2>บริการของเรา</h2>
+      <p>รับงานบ้านพักอาศัย รีสอร์ท ร้านค้า ในเขาใหญ่ ปากช่อง และพื้นที่ใกล้เคียง</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-img">🎨</div>
+        <div class="card-body">
+          <h3>ทาสีบ้าน ภายนอก–ภายใน</h3>
+          <ul>
+            <li>ทาสีใหม่ / ทาทับสีเดิม / แก้สีลอกล่อน</li>
+            <li>โป๊วเก็บรอยแตกร้าวก่อนทาทุกจุด</li>
+            <li>สีจริงตรงตามตัวอย่างที่เลือก</li>
+          </ul>
+          <p>เริ่มต้น 120.-/ตร.ม. (รวมค่าแรง ไม่รวมสี)</p>
+          <a class="btn btn-green" href="#contact">ขอใบเสนอราคา</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">🏗️</div>
+        <div class="card-body">
+          <h3>ก่อสร้าง–ต่อเติม</h3>
+          <ul>
+            <li>สร้างบ้าน โรงจอดรถ ครัวไทย กันสาด</li>
+            <li>งานโครงสร้าง ปูน เหล็ก หลังคา</li>
+            <li>มีแบบและ BOQ ชัดเจนก่อนเริ่มงาน</li>
+          </ul>
+          <p>ประเมินราคาตามหน้างานจริง</p>
+          <a class="btn btn-green" href="#contact">นัดดูหน้างาน</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">🛠️</div>
+        <div class="card-body">
+          <h3>รีโนเวท–ซ่อมแซม</h3>
+          <ul>
+            <li>รีโนเวทบ้านเก่า บ้านน็อคดาวน์ รีสอร์ท</li>
+            <li>ซ่อมหลังคารั่ว ฝ้า ผนังร้าว พื้นทรุด</li>
+            <li>งานเล็กงานใหญ่ รับหมด</li>
+          </ul>
+          <p>แจ้งอาการ + ส่งรูปทาง LINE ได้เลย</p>
+          <a class="btn btn-green" href="#contact">ปรึกษาช่างฟรี</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= โชว์สีตัวอย่างบ้าน (กดเลือกสีแล้วบ้านเปลี่ยนสี) =======
+     ✏️ เพิ่ม/แก้สีได้ที่ปุ่ม .swatch ด้านล่าง: แก้ data-color (โค้ดสี), data-name (ชื่อสี), data-code (รหัสสี)
+     รหัสสีที่ใส่ไว้เป็นรหัสทดสอบ ให้เปลี่ยนเป็นรหัสจากแคตตาล็อกสีที่ใช้จริง
+-->
+<section class="studio" id="studio">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Color Preview</span>
+      <h2>โชว์สีตัวอย่างบ้าน — ลองสีก่อนทาจริง</h2>
+      <p>กดเลือกเฉดสีด้านขวา บ้านตัวอย่างจะเปลี่ยนสีให้เห็นทันที ทั้งสีผนังและสีหลังคา ถูกใจเฉดไหนแคปหน้าจอส่งมาทาง LINE ได้เลย</p>
+    </div>
+    <div class="studio-wrap">
+      <div class="house-stage">
+        <svg viewBox="0 0 640 420" role="img" aria-label="บ้านตัวอย่างสำหรับลองสี">
+          <!-- พื้นหญ้า -->
+          <ellipse cx="320" cy="392" rx="300" ry="26" fill="#dcead9"/>
+          <!-- ตัวบ้านหลัก -->
+          <rect id="wallMain" x="150" y="190" width="270" height="180" fill="#EFE3C8"/>
+          <!-- ปีกบ้านด้านขวา -->
+          <rect id="wallWing" x="420" y="240" width="130" height="130" fill="#EFE3C8"/>
+          <!-- หลังคาหลัก -->
+          <polygon id="roofMain" points="135,190 285,95 435,190" fill="#6b4a35"/>
+          <!-- หลังคาปีกขวา -->
+          <polygon id="roofWing" points="408,240 485,185 562,240" fill="#6b4a35"/>
+          <!-- ขอบหลังคา -->
+          <rect x="135" y="186" width="300" height="9" rx="4" fill="#ffffff"/>
+          <rect x="408" y="236" width="154" height="8" rx="4" fill="#ffffff"/>
+          <!-- หน้าต่างชั้นบน (หน้าจั่ว) -->
+          <rect x="262" y="128" width="46" height="46" rx="6" fill="#ffffff"/>
+          <rect x="268" y="134" width="34" height="34" rx="4" fill="#bfe0ea"/>
+          <!-- ประตู -->
+          <rect x="200" y="280" width="58" height="90" rx="4" fill="#7a4f2c"/>
+          <circle cx="248" cy="326" r="4" fill="#e3c04b"/>
+          <!-- หน้าต่างชั้นล่าง -->
+          <rect x="292" y="255" width="100" height="66" rx="6" fill="#ffffff"/>
+          <rect x="298" y="261" width="40" height="54" rx="3" fill="#bfe0ea"/>
+          <rect x="344" y="261" width="42" height="54" rx="3" fill="#bfe0ea"/>
+          <!-- หน้าต่างปีกขวา -->
+          <rect x="452" y="270" width="66" height="56" rx="6" fill="#ffffff"/>
+          <rect x="458" y="276" width="54" height="44" rx="3" fill="#bfe0ea"/>
+          <!-- คิ้วขอบล่าง -->
+          <rect x="140" y="366" width="420" height="10" rx="5" fill="#ffffff"/>
+          <!-- ต้นไม้ -->
+          <rect x="586" y="300" width="12" height="70" rx="5" fill="#8a6242"/>
+          <circle cx="592" cy="278" r="38" fill="#4e8f5f"/>
+          <circle cx="70" cy="330" r="26" fill="#4e8f5f"/>
+          <rect x="64" y="348" width="10" height="26" rx="4" fill="#8a6242"/>
+        </svg>
+        <div class="picked">
+          <span class="dot" id="pickedDot" style="background:#EFE3C8"></span>
+          <div>
+            <strong id="pickedName">สีผนัง: ครีมเขาใหญ่</strong>
+            <small id="pickedCode">รหัสสีทดสอบ NK-102 · เหมาะกับบ้านสไตล์อบอุ่น เข้ากับหลังคาน้ำตาล</small>
+          </div>
+        </div>
+      </div>
+      <div class="palette-box">
+        <h3>🎨 เลือกสีผนัง</h3>
+        <p class="hint">เฉดยอดนิยมสำหรับบ้านพักอาศัยและรีสอร์ท</p>
+        <div class="swatches" id="wallSwatches">
+          <button class="swatch" data-color="#F5F0E6" data-name="ขาวนวล" data-code="NK-101"><span class="chip" style="background:#F5F0E6"></span>ขาวนวล</button>
+          <button class="swatch active" data-color="#EFE3C8" data-name="ครีมเขาใหญ่" data-code="NK-102"><span class="chip" style="background:#EFE3C8"></span>ครีมเขาใหญ่</button>
+          <button class="swatch" data-color="#F2DFA0" data-name="เหลืองนวลตา" data-code="NK-103"><span class="chip" style="background:#F2DFA0"></span>เหลืองนวลตา</button>
+          <button class="swatch" data-color="#D9BFA0" data-name="น้ำตาลลาเต้" data-code="NK-104"><span class="chip" style="background:#D9BFA0"></span>น้ำตาลลาเต้</button>
+          <button class="swatch" data-color="#B7C4A8" data-name="เขียวเสจ" data-code="NK-105"><span class="chip" style="background:#B7C4A8"></span>เขียวเสจ</button>
+          <button class="swatch" data-color="#BFD8DC" data-name="ฟ้าหมอกเขา" data-code="NK-106"><span class="chip" style="background:#BFD8DC"></span>ฟ้าหมอกเขา</button>
+          <button class="swatch" data-color="#B8BCB9" data-name="เทาโมเดิร์น" data-code="NK-107"><span class="chip" style="background:#B8BCB9"></span>เทาโมเดิร์น</button>
+          <button class="swatch" data-color="#D08B5E" data-name="ส้มอิฐดินเผา" data-code="NK-108"><span class="chip" style="background:#D08B5E"></span>ส้มอิฐดินเผา</button>
+        </div>
+        <h3>🏠 เลือกสีหลังคา</h3>
+        <p class="hint">จับคู่กับสีผนังให้เข้ากัน</p>
+        <div class="swatches" id="roofSwatches">
+          <button class="swatch active" data-color="#6b4a35" data-name="น้ำตาลเข้ม"><span class="chip" style="background:#6b4a35"></span>น้ำตาลเข้ม</button>
+          <button class="swatch" data-color="#4a4f54" data-name="เทาแอนทราไซต์"><span class="chip" style="background:#4a4f54"></span>เทาเข้ม</button>
+          <button class="swatch" data-color="#274e3d" data-name="เขียวป่าเขา"><span class="chip" style="background:#274e3d"></span>เขียวป่าเขา</button>
+          <button class="swatch" data-color="#8e3b2f" data-name="แดงอิฐ"><span class="chip" style="background:#8e3b2f"></span>แดงอิฐ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ผลงานตัวอย่าง =======
+     ✏️ เมื่อมีรูปถ่ายผลงานจริง ให้เปลี่ยน <div class="work-img">…(svg)…</div>
+     เป็น <img src="ชื่อไฟล์รูป.jpg" alt="ผลงาน" style="height:190px;width:100%;object-fit:cover">
+-->
+<section id="works">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Our Works</span>
+      <h2>ตัวอย่างโทนสีจากงานจริง</h2>
+      <p>ตัวอย่างการจับคู่สีที่ลูกค้าเลือกใช้บ่อย (ภาพจำลองโทนสี — รูปถ่ายผลงานจริงสอบถามได้ทาง LINE)</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="work-img">
+          <svg viewBox="0 0 300 190">
+            <ellipse cx="150" cy="178" rx="140" ry="12" fill="#dcead9"/>
+            <rect x="70" y="85" width="160" height="88" fill="#EFE3C8"/>
+            <polygon points="60,85 150,30 240,85" fill="#6b4a35"/>
+            <rect x="95" y="120" width="34" height="53" fill="#7a4f2c"/>
+            <rect x="150" y="115" width="55" height="36" rx="4" fill="#ffffff"/>
+            <rect x="155" y="120" width="45" height="26" rx="3" fill="#bfe0ea"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>บ้านชั้นเดียวโทนอบอุ่น</h3>
+          <div class="chips-row">
+            <span class="mini" style="background:#EFE3C8"></span> ครีมเขาใหญ่
+            <span class="mini" style="background:#6b4a35"></span> หลังคาน้ำตาลเข้ม
+          </div>
+          <p>ทาสีภายนอกทั้งหลัง พร้อมโป๊วเก็บรอยแตกลายงา งานเสร็จใน 6 วัน (ข้อมูลทดสอบ)</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="work-img">
+          <svg viewBox="0 0 300 190">
+            <ellipse cx="150" cy="178" rx="140" ry="12" fill="#dcead9"/>
+            <rect x="70" y="85" width="160" height="88" fill="#B7C4A8"/>
+            <polygon points="60,85 150,30 240,85" fill="#274e3d"/>
+            <rect x="95" y="120" width="34" height="53" fill="#5d4326"/>
+            <rect x="150" y="115" width="55" height="36" rx="4" fill="#ffffff"/>
+            <rect x="155" y="120" width="45" height="26" rx="3" fill="#bfe0ea"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>บ้านสวนโทนธรรมชาติ</h3>
+          <div class="chips-row">
+            <span class="mini" style="background:#B7C4A8"></span> เขียวเสจ
+            <span class="mini" style="background:#274e3d"></span> หลังคาเขียวป่าเขา
+          </div>
+          <p>รีโนเวท + ทาสีบ้านพักตากอากาศให้กลืนกับวิวเขาใหญ่ ลูกค้าเลือกสีจากหน้าเว็บนี้ (ข้อมูลทดสอบ)</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="work-img">
+          <svg viewBox="0 0 300 190">
+            <ellipse cx="150" cy="178" rx="140" ry="12" fill="#dcead9"/>
+            <rect x="70" y="85" width="160" height="88" fill="#B8BCB9"/>
+            <polygon points="60,85 150,30 240,85" fill="#4a4f54"/>
+            <rect x="95" y="120" width="34" height="53" fill="#3c3f43"/>
+            <rect x="150" y="115" width="55" height="36" rx="4" fill="#ffffff"/>
+            <rect x="155" y="120" width="45" height="26" rx="3" fill="#bfe0ea"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <h3>บ้านโมเดิร์นโทนเทา</h3>
+          <div class="chips-row">
+            <span class="mini" style="background:#B8BCB9"></span> เทาโมเดิร์น
+            <span class="mini" style="background:#4a4f54"></span> หลังคาเทาเข้ม
+          </div>
+          <p>ต่อเติมโรงจอดรถ + ทาสีใหม่ทั้งหลังสไตล์โมเดิร์น พร้อมกันซึมดาดฟ้า (ข้อมูลทดสอบ)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= รีวิวลูกค้า =======
+     ✏️ เปลี่ยนข้อความรีวิวและชื่อลูกค้าเป็นรีวิวจริงได้เลย (ตอนนี้เป็นข้อความทดสอบ)
+-->
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Reviews</span>
+      <h2>เสียงจากลูกค้าตัวจริง</h2>
+      <p>ความประทับใจส่วนหนึ่งจากเจ้าของบ้านที่ใช้บริการพี่หนึ่ง</p>
+    </div>
+    <div class="grid-3">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>ให้ทาสีบ้านทั้งหลังค่ะ ชอบที่มีสีตัวอย่างให้ดูก่อน ทาจริงออกมาตรงเป๊ะ ช่างเก็บงานเรียบร้อย ไม่ทิ้งขยะไว้เลย</p>
+        <div class="who">
+          <div class="avatar">👩</div>
+          <div><strong>คุณเมย์</strong><span>ทาสีบ้าน 2 ชั้น • ปากช่อง</span></div>
+        </div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>จ้างต่อเติมครัวหลังบ้านครับ เสนอราคาชัดเจนเป็นรายการ ไม่มีบวกเพิ่มทีหลัง งานโครงสร้างแน่นมาก แนะนำเลย</p>
+        <div class="who">
+          <div class="avatar">👨</div>
+          <div><strong>คุณต้น</strong><span>ต่อเติมครัวไทย • เขาใหญ่</span></div>
+        </div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>รีโนเวทบ้านพักตากอากาศทั้งหลัง พี่หนึ่งช่วยแนะนำโทนสีให้เข้ากับวิวเขา ออกมาสวยกว่าที่คิดไว้อีกค่ะ</p>
+        <div class="who">
+          <div class="avatar">👩‍🦰</div>
+          <div><strong>คุณฝน</strong><span>รีโนเวทบ้านพัก • หมูสี</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ติดต่อ =======
+     ✏️ สำคัญ! ข้อมูลติดต่อตอนนี้เป็นข้อมูลทดสอบ — แก้เป็นของจริงตรงนี้
+     - เบอร์โทร: 081-234-5678 (ทดสอบ)
+     - LINE: แก้ @nuengkhaoyai เป็น LINE ID จริง (ลิงก์ https://line.me/R/ti/p/@ไอดีไลน์)
+     - Facebook: ใส่ลิงก์เพจจริง
+-->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <h2>นัดดูหน้างาน / ขอใบเสนอราคา <em>ฟรี ไม่มีค่าใช้จ่าย</em></h2>
+        <p>ส่งรูปหน้างาน บอกขนาดพื้นที่ หรือแคปสีบ้านที่ถูกใจจากหน้าเว็บนี้มาทาง LINE ได้เลย พี่หนึ่งประเมินราคาให้ไว ตอบทุกข้อความ</p>
+        <a class="btn btn-gold" href="https://line.me/R/ti/p/@nuengkhaoyai">💬 แอด LINE เลย คลิก!</a>
+      </div>
+      <ul class="contact-list">
+        <li>
+          <span class="ci">📱</span>
+          <div>โทร 081-234-5678<small>โทรได้ทุกวัน 8:00 – 19:00 น.</small></div>
+        </li>
+        <li>
+          <span class="ci">💚</span>
+          <div>LINE: @nuengkhaoyai<small>ช่องทางหลัก ส่งรูปหน้างานได้เลย</small></div>
+        </li>
+        <li>
+          <span class="ci">📘</span>
+          <div>Facebook: พี่หนึ่งเขาใหญ่ รับเหมาก่อสร้าง<small>ติดตามผลงานและรีวิว</small></div>
+        </li>
+        <li>
+          <span class="ci">📍</span>
+          <div>เขาใหญ่ ปากช่อง นครราชสีมา<small>รับงานเขาใหญ่และพื้นที่ใกล้เคียง</small></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2569 <strong>พี่หนึ่งเขาใหญ่</strong> — รับเหมาก่อสร้าง ต่อเติม ทาสีบ้าน เขาใหญ่ ปากช่อง | ประเมินราคาฟรี รับประกันผลงาน
+  </div>
+</footer>
+
+<script>
+  // โชว์สีตัวอย่างบ้าน: กดเลือกสีแล้วเปลี่ยนสีผนัง/หลังคาของบ้านตัวอย่าง
+  (function(){
+    var wallParts = [document.getElementById('wallMain'), document.getElementById('wallWing')];
+    var roofParts = [document.getElementById('roofMain'), document.getElementById('roofWing')];
+    var dot = document.getElementById('pickedDot');
+    var name = document.getElementById('pickedName');
+    var code = document.getElementById('pickedCode');
+
+    function bind(groupId, parts, label){
+      var group = document.getElementById(groupId);
+      group.addEventListener('click', function(e){
+        var btn = e.target.closest('.swatch');
+        if(!btn) return;
+        group.querySelectorAll('.swatch').forEach(function(s){ s.classList.remove('active'); });
+        btn.classList.add('active');
+        var c = btn.getAttribute('data-color');
+        parts.forEach(function(p){ p.setAttribute('fill', c); });
+        dot.style.background = c;
+        name.textContent = label + ': ' + btn.getAttribute('data-name');
+        code.textContent = btn.getAttribute('data-code')
+          ? 'รหัสสีทดสอบ ' + btn.getAttribute('data-code') + ' · แคปหน้าจอส่งทาง LINE เพื่อขอใบเสนอราคาได้เลย'
+          : 'แคปหน้าจอส่งทาง LINE เพื่อขอใบเสนอราคาได้เลย';
+      });
+    }
+    bind('wallSwatches', wallParts, 'สีผนัง');
+    bind('roofSwatches', roofParts, 'สีหลังคา');
+  })();
+</script>
+
+</body>
+</html>
