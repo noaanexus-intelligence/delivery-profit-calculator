@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>พี่หนึ่งเขาใหญ่ — ตัวแทนจำหน่าย Perfective</title>
+<meta name="description" content="พี่หนึ่งเขาใหญ่ ตัวแทนจำหน่ายผลิตภัณฑ์ Perfective ของแท้ 100% ส่งไว บริการประทับใจ">
+<style>
+  :root{
+    --green:#1b5e3a;
+    --green-dark:#123f27;
+    --green-light:#e8f5ee;
+    --gold:#c9a227;
+    --gold-light:#f7edd0;
+    --text:#22302a;
+    --muted:#5c6b63;
+    --bg:#fdfcf8;
+    --white:#ffffff;
+    --radius:16px;
+    --shadow:0 8px 30px rgba(18,63,39,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Leelawadee UI","Sukhumvit Set","Prompt","Noto Sans Thai",Tahoma,sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.7;
+  }
+  img{max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(253,252,248,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid #e8e4d8;
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;color:var(--green-dark)}
+  .logo .badge{
+    width:38px;height:38px;border-radius:50%;
+    background:linear-gradient(135deg,var(--green),var(--green-dark));
+    color:var(--gold-light);display:grid;place-items:center;
+    font-size:1.2rem;
+  }
+  nav ul{display:flex;gap:22px;list-style:none;font-size:.95rem}
+  nav ul a{color:var(--muted);font-weight:600}
+  nav ul a:hover{color:var(--green)}
+  .btn{
+    display:inline-block;padding:12px 26px;border-radius:999px;
+    font-weight:700;font-size:1rem;transition:transform .15s,box-shadow .15s;
+    cursor:pointer;border:none;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .btn-gold{background:linear-gradient(135deg,#e3c04b,var(--gold));color:#3a2e05}
+  .btn-green{background:var(--green);color:#fff}
+  .btn-line{background:#06c755;color:#fff}
+  .nav .btn{padding:9px 20px;font-size:.9rem}
+  @media(max-width:720px){nav ul{display:none}}
+
+  /* ===== Hero ===== */
+  .hero{
+    background:
+      radial-gradient(ellipse at 80% -10%,rgba(201,162,39,.18),transparent 55%),
+      linear-gradient(160deg,var(--green-dark) 0%,var(--green) 70%,#2a7a4e 100%);
+    color:#fff;
+    padding:80px 0 90px;
+    position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:-1px;height:60px;
+    background:var(--bg);
+    clip-path:ellipse(75% 100% at 50% 100%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  @media(max-width:800px){.hero-grid{grid-template-columns:1fr}}
+  .tag{
+    display:inline-block;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.3);
+    padding:6px 16px;border-radius:999px;font-size:.85rem;margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.25;margin-bottom:16px}
+  .hero h1 em{font-style:normal;color:#f2d878}
+  .hero p{font-size:1.08rem;color:#d9e9e0;max-width:520px;margin-bottom:28px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-card{
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:var(--radius);padding:28px;backdrop-filter:blur(4px);
+  }
+  .hero-card h3{color:#f2d878;margin-bottom:12px;font-size:1.05rem}
+  .hero-card ul{list-style:none;display:grid;gap:10px;font-size:.98rem}
+  .hero-card li::before{content:"✔";color:#7fe0a8;margin-right:10px;font-weight:700}
+
+  /* ===== Sections ===== */
+  section{padding:70px 0}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 44px}
+  .section-head .kicker{
+    color:var(--gold);font-weight:800;letter-spacing:.12em;
+    text-transform:uppercase;font-size:.8rem;
+  }
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);color:var(--green-dark);margin:8px 0 10px}
+  .section-head p{color:var(--muted)}
+
+  /* Trust bar */
+  .trust{background:var(--green-light);padding:34px 0}
+  .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}
+  @media(max-width:720px){.trust-grid{grid-template-columns:repeat(2,1fr)}}
+  .trust-item strong{display:block;font-size:1.5rem;color:var(--green-dark)}
+  .trust-item span{color:var(--muted);font-size:.9rem}
+
+  /* Products */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:860px){.grid-3{grid-template-columns:1fr}}
+  .card{
+    background:var(--white);border-radius:var(--radius);
+    box-shadow:var(--shadow);overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .2s;
+  }
+  .card:hover{transform:translateY(-6px)}
+  .card-img{
+    height:170px;display:grid;place-items:center;font-size:3.2rem;
+    background:linear-gradient(135deg,var(--green-light),var(--gold-light));
+  }
+  .card-body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card-body h3{color:var(--green-dark);font-size:1.12rem}
+  .card-body p{color:var(--muted);font-size:.95rem;flex:1}
+  .price{font-weight:800;color:var(--gold);font-size:1.25rem}
+  .price small{color:var(--muted);font-weight:500;font-size:.8rem;margin-left:6px}
+  .card .btn{text-align:center}
+
+  /* Why us */
+  .why{background:var(--green-light)}
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+  .why-item{
+    background:var(--white);border-radius:var(--radius);padding:26px;
+    box-shadow:var(--shadow);
+  }
+  .why-item .icon{
+    width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--green),var(--green-dark));
+    font-size:1.5rem;margin-bottom:14px;
+  }
+  .why-item h3{color:var(--green-dark);margin-bottom:6px;font-size:1.05rem}
+  .why-item p{color:var(--muted);font-size:.95rem}
+
+  /* Testimonials */
+  .quote{
+    background:var(--white);border-radius:var(--radius);padding:26px;
+    box-shadow:var(--shadow);position:relative;
+  }
+  .quote::before{
+    content:"“";position:absolute;top:6px;left:18px;
+    font-size:3.4rem;color:var(--gold);opacity:.4;font-family:Georgia,serif;
+  }
+  .quote p{color:var(--text);font-size:.98rem;margin:14px 0 16px}
+  .quote .who{display:flex;align-items:center;gap:12px}
+  .quote .avatar{
+    width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    background:var(--green-light);font-size:1.3rem;
+  }
+  .quote .who strong{display:block;color:var(--green-dark);font-size:.95rem}
+  .quote .who span{color:var(--muted);font-size:.82rem}
+  .stars{color:var(--gold);letter-spacing:2px}
+
+  /* Contact */
+  .contact-wrap{
+    display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;
+    background:linear-gradient(150deg,var(--green-dark),var(--green));
+    border-radius:24px;padding:48px;color:#fff;
+  }
+  @media(max-width:800px){.contact-wrap{grid-template-columns:1fr;padding:32px}}
+  .contact-wrap h2{font-size:1.7rem;margin-bottom:10px}
+  .contact-wrap h2 em{font-style:normal;color:#f2d878}
+  .contact-wrap p{color:#d9e9e0;margin-bottom:22px}
+  .contact-list{list-style:none;display:grid;gap:16px}
+  .contact-list li{
+    display:flex;align-items:center;gap:14px;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+    border-radius:14px;padding:14px 18px;font-weight:600;
+  }
+  .contact-list .ci{
+    width:42px;height:42px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(255,255,255,.15);font-size:1.3rem;flex-shrink:0;
+  }
+  .contact-list small{display:block;font-weight:400;color:#cfe3d7;font-size:.8rem}
+
+  footer{padding:34px 0;text-align:center;color:var(--muted);font-size:.88rem}
+  footer strong{color:var(--green-dark)}
+</style>
+</head>
+<body>
+
+<!-- ======= แถบเมนูด้านบน ======= -->
+<header>
+  <div class="container nav">
+    <a class="logo" href="#top">
+      <span class="badge">🌿</span>
+      พี่หนึ่งเขาใหญ่
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#products">สินค้า</a></li>
+        <li><a href="#why">ทำไมต้องซื้อกับเรา</a></li>
+        <li><a href="#reviews">รีวิว</a></li>
+        <li><a href="#contact">ติดต่อ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-gold" href="#contact">สั่งซื้อเลย</a>
+  </div>
+</header>
+
+<!-- ======= ส่วนหัวเว็บ (Hero) ======= -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">✨ ตัวแทนจำหน่ายอย่างเป็นทางการ</span>
+      <h1>พี่หนึ่งเขาใหญ่<br>ตัวแทนจำหน่าย <em>Perfective</em> ของแท้ 100%</h1>
+      <p>ดูแลตัวเองให้ดีที่สุดกับผลิตภัณฑ์ Perfective คัดสรรของแท้จากบริษัทโดยตรง ส่งไว มีปลายทาง ให้คำปรึกษาฟรีทุกขั้นตอน</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#products">ดูสินค้าทั้งหมด</a>
+        <a class="btn btn-line" href="#contact">💬 ทัก LINE พี่หนึ่ง</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>ทำไมลูกค้าไว้ใจพี่หนึ่ง</h3>
+      <ul>
+        <li>ของแท้ 100% ตรงจากบริษัท</li>
+        <li>ส่งไวทุกวัน มีเก็บเงินปลายทาง</li>
+        <li>ให้คำแนะนำการใช้ฟรี ตอบไว</li>
+        <li>ดูแลหลังการขาย ไม่ทิ้งลูกค้า</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======= แถบตัวเลขความน่าเชื่อถือ ======= -->
+<div class="trust">
+  <div class="container trust-grid">
+    <div class="trust-item"><strong>ของแท้ 100%</strong><span>ตรงจากบริษัท</span></div>
+    <div class="trust-item"><strong>1,000+</strong><span>ลูกค้าที่ไว้วางใจ</span></div>
+    <div class="trust-item"><strong>ส่งทุกวัน</strong><span>มีเก็บเงินปลายทาง</span></div>
+    <div class="trust-item"><strong>ตอบไว</strong><span>ปรึกษาฟรีทาง LINE</span></div>
+  </div>
+</div>
+
+<!-- ======= สินค้า =======
+     ✏️ แก้ชื่อสินค้า คำอธิบาย และราคาได้ตรงนี้เลย
+     ถ้ามีรูปสินค้าจริง ให้เปลี่ยน <div class="card-img">…</div>
+     เป็น <img src="ชื่อไฟล์รูป.jpg" alt="ชื่อสินค้า" style="height:170px;object-fit:cover">
+-->
+<section id="products">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Products</span>
+      <h2>ผลิตภัณฑ์ Perfective</h2>
+      <p>คัดมาเฉพาะตัวขายดี ใช้ดี บอกต่อ — สอบถามโปรโมชั่นล่าสุดได้ทาง LINE</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-img">🧴</div>
+        <div class="card-body">
+          <h3>Perfective ตัวขายดีอันดับ 1</h3>
+          <p>ใส่คำอธิบายสินค้า จุดเด่น และวิธีใช้สั้น ๆ ตรงนี้ เพื่อให้ลูกค้าตัดสินใจง่ายขึ้น</p>
+          <div class="price">590.-<small>ส่งฟรี</small></div>
+          <a class="btn btn-green" href="#contact">สั่งซื้อสินค้า</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">💊</div>
+        <div class="card-body">
+          <h3>Perfective สูตรพรีเมียม</h3>
+          <p>ใส่คำอธิบายสินค้า จุดเด่น และวิธีใช้สั้น ๆ ตรงนี้ เพื่อให้ลูกค้าตัดสินใจง่ายขึ้น</p>
+          <div class="price">890.-<small>ส่งฟรี</small></div>
+          <a class="btn btn-green" href="#contact">สั่งซื้อสินค้า</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img">🎁</div>
+        <div class="card-body">
+          <h3>เซ็ตคู่สุดคุ้ม</h3>
+          <p>จับคู่สินค้าขายดี ราคาพิเศษกว่าซื้อแยก เหมาะสำหรับใช้ต่อเนื่องหรือซื้อเป็นของฝาก</p>
+          <div class="price">1,390.-<small>ส่งฟรี + ของแถม</small></div>
+          <a class="btn btn-green" href="#contact">สั่งซื้อสินค้า</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ทำไมต้องซื้อกับพี่หนึ่ง ======= -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Why Us</span>
+      <h2>ทำไมต้องสั่งกับพี่หนึ่งเขาใหญ่</h2>
+      <p>ซื้อกับตัวแทนที่ดูแลจริง ต่างจากซื้อลอย ๆ ตามเน็ตแน่นอน</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="icon">✅</div>
+        <h3>ของแท้ ตรวจสอบได้</h3>
+        <p>รับสินค้าตรงจากบริษัท Perfective ทุกชิ้นมีล็อตการผลิตชัดเจน มั่นใจได้ 100%</p>
+      </div>
+      <div class="why-item">
+        <div class="icon">🚚</div>
+        <h3>ส่งไว มีปลายทาง</h3>
+        <p>แพ็คแน่น ส่งทุกวัน มีบริการเก็บเงินปลายทาง สะดวก ไม่ต้องโอนก่อนก็สั่งได้</p>
+      </div>
+      <div class="why-item">
+        <div class="icon">💬</div>
+        <h3>ปรึกษาฟรี ดูแลตลอด</h3>
+        <p>ไม่แน่ใจว่าตัวไหนเหมาะกับเรา ทักมาคุยก่อนได้เลย พี่หนึ่งแนะนำให้ตรงจุด ไม่ยัดเยียดขาย</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= รีวิวลูกค้า =======
+     ✏️ เปลี่ยนข้อความรีวิวและชื่อลูกค้าเป็นรีวิวจริงได้เลย
+-->
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Reviews</span>
+      <h2>เสียงจากลูกค้าตัวจริง</h2>
+      <p>ความประทับใจส่วนหนึ่งจากลูกค้าที่สั่งซ้ำกับพี่หนึ่ง</p>
+    </div>
+    <div class="grid-3">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>สั่งกับพี่หนึ่งมาหลายรอบแล้วค่ะ ของแท้ ส่งไวมาก ทักไปตอบเร็วทุกครั้ง แนะนำเลยค่ะ</p>
+        <div class="who">
+          <div class="avatar">👩</div>
+          <div><strong>คุณเมย์</strong><span>ลูกค้าประจำ • นครราชสีมา</span></div>
+        </div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>ตอนแรกไม่แน่ใจว่าจะใช้ตัวไหน พี่หนึ่งแนะนำให้ตรงกับที่ต้องการมาก ใช้แล้วชอบ กลับมาซื้อซ้ำครับ</p>
+        <div class="who">
+          <div class="avatar">👨</div>
+          <div><strong>คุณต้น</strong><span>ลูกค้าใหม่ • กรุงเทพฯ</span></div>
+        </div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>บริการดีมาก มีเก็บเงินปลายทางด้วย แพ็คของเรียบร้อย ได้ของไวกว่าที่คิด ประทับใจค่ะ</p>
+        <div class="who">
+          <div class="avatar">👩‍🦰</div>
+          <div><strong>คุณฝน</strong><span>ลูกค้าประจำ • ปากช่อง</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ติดต่อสั่งซื้อ =======
+     ✏️ สำคัญ! แก้เบอร์โทร, LINE ID และลิงก์ Facebook เป็นของจริงตรงนี้
+     - เบอร์โทร: แก้ทั้งใน href="tel:..." และข้อความที่แสดง
+     - LINE: แก้ @yourlineid เป็น LINE ID จริง (ลิงก์ https://line.me/R/ti/p/@ไอดีไลน์)
+     - Facebook: ใส่ลิงก์เพจจริงแทน #
+-->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div>
+        <h2>สั่งซื้อ / สอบถาม <em>ทักพี่หนึ่งได้เลย</em></h2>
+        <p>ตอบไว ให้คำแนะนำฟรี ไม่ซื้อไม่ว่ากัน สอบถามโปรโมชั่นประจำเดือนได้ทุกช่องทาง</p>
+        <a class="btn btn-gold" href="https://line.me/R/ti/p/@yourlineid">💬 แอด LINE เลย คลิก!</a>
+      </div>
+      <ul class="contact-list">
+        <li>
+          <span class="ci">📱</span>
+          <div>โทร 08x-xxx-xxxx<small>โทรได้ทุกวัน 9:00 – 20:00 น.</small></div>
+        </li>
+        <li>
+          <span class="ci">💚</span>
+          <div>LINE: @yourlineid<small>ช่องทางหลัก ตอบไวสุด</small></div>
+        </li>
+        <li>
+          <span class="ci">📘</span>
+          <div>Facebook: พี่หนึ่งเขาใหญ่<small>ติดตามรีวิวและโปรโมชั่น</small></div>
+        </li>
+        <li>
+          <span class="ci">📍</span>
+          <div>เขาใหญ่ ปากช่อง นครราชสีมา<small>ส่งทั่วประเทศ</small></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2569 <strong>พี่หนึ่งเขาใหญ่</strong> — ตัวแทนจำหน่ายผลิตภัณฑ์ Perfective | ของแท้ 100% ส่งไวทั่วไทย
+  </div>
+</footer>
+
+</body>
+</html>
